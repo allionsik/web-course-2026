@@ -1,0 +1,19 @@
+.header {
+    display: flex;              /* текст и фото в одну строку */
+    align-items: center;        /* выравнивание по вертикали */
+    justify-content: flex-start;  /* текст слева, фото справа */
+    gap: 100px;                  /* отступ между текстом и фото */
+  }
+  
+  .header-text {
+    /* можно ничего не писать, но если нужно — ограничить ширину */
+    max-width: 400px;
+  }
+  
+  .avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;         /* круглая фотка */
+    object-fit: cover;          /* чтобы не растягивалась */
+    flex-shrink: 0;             /* чтобы фото не сжималось */
+  }
