@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+
+    /* ФОНОВАЯ ФОТОГРАФИЯ — замени background.jpg на имя своего файла */
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 40px;
+}
+
+.message {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: #ffffff;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+}
