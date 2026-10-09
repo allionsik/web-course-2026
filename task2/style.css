@@ -1,0 +1,535 @@
+/* =========================================
+   БАЗОВЫЕ СТИЛИ (MOBILE FIRST)
+   ========================================= */
+   *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: 'Cinzel', serif;
+    font-weight: 400;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    width: 100%;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    min-height: 44px;
+    padding: 12px 30px;
+    border: 1px solid #000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+    background: transparent;
+}
+
+.btn--primary { background-color: #360623; color: #fff; border-color: #fff; }
+.btn--primary:hover { background-color: #d2c8a6; border-color: #d4af37; color: #000; }
+.btn--outline { background-color: #360623; color: #fff; border-color: #fff; }
+.btn--outline:hover { background-color: #d2c8a6; color: #000; }
+
+/* =========================================
+   ШАПКА И НАВИГАЦИЯ
+   ========================================= */
+.header {
+    background-color: #e7ccc5;
+    border-bottom: 1px solid #ffd7db;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #000;
+    letter-spacing: 2px;
+}
+
+.burger-toggle { display: none; }
+
+.burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+}
+
+.burger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: #000;
+    transition: 0.3s;
+}
+
+.nav__list {
+    display: none;
+    list-style: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #93676ca2;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: #000;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 15px 0;
+    display: block;
+}
+
+.burger-toggle:checked ~ .nav__list { display: flex; }
+.burger-toggle:checked + .burger span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+.burger-toggle:checked + .burger span:nth-child(2) { opacity: 0; }
+.burger-toggle:checked + .burger span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+/* =========================================
+   HERO SECTION
+   ========================================= */
+.hero {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+}
+
+.hero__bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+}
+
+.hero__bg img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+}
+
+.hero__title { font-size: 2.5rem; margin-bottom: 1rem; line-height: 1.2; }
+.hero__subtitle { font-size: 1.1rem; margin-bottom: 2rem; font-weight: 300; }
+.hero__buttons { display: flex; flex-direction: column; gap: 15px; align-items: center; }
+
+/* =========================================
+   СЕКЦИЯ TUNE IN
+   ========================================= */
+.tune-in { 
+    padding: 60px 0; 
+    background-color: #f8e5d7; 
+}
+
+.tune-in .section-title {
+    font-family: 'Rouge Script', cursive;
+    color: #2B0303;
+    font-size: 6rem;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+}
+
+.tune-in__grid { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 20px; 
+}
+
+.info-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.info-card { 
+    background: #fff; 
+    padding: 30px; 
+    text-align: center; 
+    border: 1px solid #eee; 
+    height: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.info-card-link:hover .info-card {
+    background-color: #fdf5f7;
+}
+
+.info-card h3 { 
+    font-size: 1.3rem; 
+    margin-bottom: 10px; 
+    transition: color 0.3s ease;
+}
+
+.info-card-link:hover .info-card h3 {
+    color: #d4af37;
+}
+
+/* =========================================
+   СЕКЦИЯ THE CAST (10 моделей)
+   ========================================= */
+.cast {
+    padding: 60px 0;
+    background-color: #ffd7db;
+}
+
+.cast .section-title {
+    font-family: 'Rouge Script', cursive;
+    color: #2B0303;
+    font-size: 6rem;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.1;
+}
+.cast__subtitle {
+    text-align: center;
+    color: #2B0303;
+    opacity: 0.8;
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cast__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 15px;
+}
+
+.model-card {
+    text-align: center;
+    cursor: pointer;
+}
+
+.model-card__image {
+    overflow: hidden;
+    margin-bottom: 10px;
+    background-color: #fff;
+}
+
+.model-card__image img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.model-card:hover .model-card__image img {
+    transform: scale(1.05);
+}
+
+.model-card__name {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: #2B0303;
+    transition: color 0.3s ease;
+    font-weight: 600;
+}
+
+.model-card:hover .model-card__name {
+    color: #f8e5d7;
+}
+
+/* =========================================
+   СЕКЦИЯ THE LATEST (точная копия Tune In)
+   ========================================= */
+   .latest { 
+    padding: 60px 0; 
+    background-color: #f8e5d7; /* Такой же фон, как у Tune In */
+}
+
+.latest .section-title {
+    font-family: 'Rouge Script', cursive;
+    color: #2B0303;
+    font-size: 6rem;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+}
+
+.latest__grid { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 20px; 
+}
+
+/* Обертка для карточки (аналог info-card-link) */
+.news-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Сама карточка (аналог info-card) */
+.news-card { 
+    background: #fff; 
+    padding: 30px; 
+    text-align: center; 
+    border: 1px solid #eee; 
+    height: 100%;
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* При наведении карточка становится розоватой */
+.news-card-link:hover .news-card {
+    background-color: #fdf5f7;
+}
+
+/* Заголовок карточки */
+.news-card h3 { 
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem; 
+    margin-bottom: 10px; 
+    transition: color 0.3s ease;
+    color: #333;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+/* При наведении заголовок становится золотым */
+.news-card-link:hover .news-card h3 {
+    color: #d4af37;
+}
+
+/* Текст карточки */
+.news-card p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Ссылка-стрелка внутри карточки */
+.link-arrow { 
+    display: inline-block; 
+    margin-top: auto; 
+    color: #000; 
+    text-decoration: none; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    font-size: 0.8rem; 
+    letter-spacing: 1px; 
+    transition: color 0.3s; 
+    font-family: 'Montserrat', sans-serif;
+}
+
+.link-arrow:hover { 
+    color: #d4af37; 
+}
+/* =========================================
+   ФОРМА
+   ========================================= */
+   .contact { 
+    padding: 60px 0; 
+    text-align: center; 
+    background-color: #ffd7db; /* <-- Цвет фона */
+}
+.contact__text { margin-bottom: 30px; color: #666; }
+.contact-form { max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+.form-group input { width: 100%; padding: 15px; border: 1px solid #ccc; font-family: 'Montserrat', sans-serif; font-size: 1rem; min-height: 44px; transition: border-color 0.3s; }
+.form-group input:focus { outline: none; border-color: #000; }
+.contact-form .btn { width: 100%; }
+
+/* =========================================
+   ПОДВАЛ (Angels Among Us)
+   ========================================= */
+   .footer { 
+    padding: 40px 0 20px; 
+    background-color: #000;
+    color: #fff; 
+    text-align: center; 
+}
+
+.footer__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Логотип "Angels Among Us" */
+.angels-logo {
+    font-family: 'Bodoni Moda', serif;
+    text-transform: uppercase;
+    line-height: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    letter-spacing: 7px;
+}
+
+/* --- АНИМАЦИЯ БЛЕСКА НА БУКВАХ --- */
+.angels-logo__top,
+.angels-logo__bottom {
+    font-size: 5rem;
+    font-weight: 400;
+    
+    /* Создаем градиент: розовый -> белый -> розовый */
+    background: linear-gradient(
+        90deg, 
+        #F4A6D7 0%, 
+        #F4A6D7 40%, 
+        #ffffff 50%, 
+        #F4A6D7 60%, 
+        #F4A6D7 100%
+    );
+    /* Обрезаем фон по контуру букв */
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* Делаем сам текст прозрачным, чтобы был виден градиент */
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Дублируем для надежности */
+    
+    /* Увеличиваем размер градиента, чтобы он двигался */
+    background-size: 200% auto;
+    
+    /* Запускаем анимацию: 3 секунды, линейно, бесконечно */
+    animation: shine 3s linear infinite;
+}
+
+/* Задержка для нижней надписи, чтобы они мерцали по очереди */
+.angels-logo__bottom {
+    animation-delay: 1.5s;
+}
+
+.angels-logo__brand {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: #fff;
+    margin: 5px 0;
+}
+
+.footer__copyright {
+    font-size: 0.7rem;
+    color: #666;
+    letter-spacing: 1px;
+}
+
+/* Анимация движения блеска */
+@keyframes shine {
+    0% {
+        background-position: 200% center;
+    }
+    100% {
+        background-position: -200% center;
+    }
+}
+/* =========================================
+   МЕДИАЗАПРОСЫ
+   ========================================= */
+
+/* Планшет: 768px+ */
+@media (min-width: 768px) {
+    .container { max-width: 720px; }
+    .hero__title { font-size: 3.5rem; }
+    .hero__buttons { flex-direction: row; justify-content: center; }
+    .tune-in__grid { grid-template-columns: repeat(2, 1fr); }
+    .latest__grid { grid-template-columns: repeat(2, 1fr); }
+    
+    /* На планшете 3 колонки */
+    .cast__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .model-card__image img {
+        height: 300px;
+    }
+
+    .burger { display: none; }
+    .nav__list { display: flex; position: static; flex-direction: row; width: auto; padding: 0; border: none; gap: 20px; }
+    .nav__link { padding: 0; font-size: 0.8rem; }
+}
+
+/* Десктоп: 1200px+ */
+@media (min-width: 1200px) {
+    .container { max-width: 1140px; }
+    .hero__title { font-size: 4.5rem; }
+    .tune-in__grid { grid-template-columns: repeat(2, 1fr); }
+
+    /* На десктопе 4 колонки */
+    .cast__grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+    
+    .model-card__image img {
+        height: 350px;
+    }
+}
