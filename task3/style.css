@@ -1,0 +1,360 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --olive-bg: #bac4a0;
+    --olive-frame: #b3a3d3;
+    --paper-bg: #fcfbf7;
+    --text-color: #5c6347;
+    --line-color: #b5bd99;
+}
+
+body {
+    font-family: 'Nunito', 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px;
+
+    /* Фон в клеточку */
+       /* Фон из сердечек */
+       background-color: #f6e8f6;
+       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M20 32 C20 32 8 24 8 16 C8 11 12 8 16 8 C18 8 20 10 20 12 C20 10 22 8 24 8 C28 8 32 11 32 16 C32 24 20 32 20 32 Z' fill='%23b3a3d3' fill-opacity='0.35'/%3E%3C/svg%3E");
+       background-size: 40px 40px;ы
+}
+
+/* ===== ОСНОВНОЙ КОНТЕЙНЕР ===== */
+.app {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    height: 660px;
+}
+
+/* Зеленая волнистая рамка */
+.frame-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 8px 16px rgba(15, 15, 15, 0.15));
+}
+
+/* Цвет рамки */
+.frame-svg path,
+.frame-svg rect,
+.frame-svg polygon {
+    fill: var(--olive-frame);
+    stroke: var(--olive-frame);
+}
+/* ===== БЕЛЫЙ ЛИСТ ===== */
+.paper {
+    position: absolute;
+    inset: 22px 35px 25px 35px;
+    display: flex;
+    flex-direction: column;
+}
+
+.paper-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.568));
+}
+
+.paper-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    padding: 35px 25px 25px 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Заголовок */
+h1 {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 46px;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 12px;
+    line-height: 1;
+}
+
+/* Форма добавления */
+.todo-form {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.todo-input {
+    flex: 1;
+    padding: 6px 4px;
+    border: none;
+    border-bottom: 1.5px solid var(--line-color);
+    background: transparent;
+    font: 15px 'Nunito', sans-serif;
+    color: var(--text-color);
+    outline: none;
+}
+
+.todo-input::placeholder {
+    color: #b0b898;
+    font-style: italic;
+    font-size: 13px;
+}
+
+.todo-input.error {
+    border-bottom-color: #d9534f;
+    animation: shake 0.3s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+}
+
+/* Кнопка "Добавить" */
+.btn--add {
+    border: none;
+    border-radius: 14px;
+    padding: 5px 12px;
+    background: #B3A3D3;
+    color: #fff;
+    font: 600 12px 'Nunito', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s, background 0.15s;
+    flex-shrink: 0;
+}
+
+.btn--add:hover {
+    transform: scale(1.05);
+    background: #fbf1b1;
+    color: #252222;
+}
+
+.btn--add:active {
+    transform: scale(0.95);
+}
+
+/* Фильтры */
+.filters {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 12px;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 2px 10px;
+    border: 1px solid var(--line-color);
+    background: transparent;
+    border-radius: 12px;
+    font: 11px 'Nunito', sans-serif;
+    color: var(--text-color);
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all 0.2s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    opacity: 1;
+    background: #B3A3D3;
+    color: #fff;
+    border-color: var(--text-color);
+}
+
+/* Список задач */
+.todo-list {
+    list-style: none;
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+/* Форматирование полосок как в блокноте */
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 28px;
+    border-bottom: 1px dashed var(--line-color);
+    position: relative;
+}
+
+.todo-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--text-color);
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.todo-item input[type="checkbox"]:checked {
+    background-color: var(--text-color);
+}
+
+.todo-item input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 7px;
+    height: 4px;
+    border-left: 1.5px solid #fff;
+    border-bottom: 1.5px solid #fff;
+    transform: rotate(-45deg);
+}
+
+.todo-item__text {
+    flex: 1;
+    font-size: 15px;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.todo-item.completed .todo-item__text {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.todo-item__delete {
+    background: transparent;
+    border: none;
+    color: #c2b59b;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+.todo-item:hover .todo-item__delete {
+    opacity: 1;
+}
+
+.todo-item__delete:hover {
+    color: #d9534f;
+}
+
+.empty {
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    color: var(--line-color);
+    padding-top: 40px;
+}
+
+/* Счётчик */
+.counter {
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-color);
+    opacity: 0.7;
+    margin-top: 6px;
+}
+
+/* Скроллбар */
+.todo-list::-webkit-scrollbar {
+    width: 3px;
+}
+.todo-list::-webkit-scrollbar-thumb {
+    background: var(--line-color);
+    border-radius: 3px;
+}
+
+/* ===== ПОЗИЦИОНИРОВАНИЕ ДЕКОРАЦИЙ ===== */
+.decor {
+    position: absolute;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.bow-top-left {
+    top: 10px;
+    left: 20px;
+    width: 80px;
+    height: 65px;
+    transform: rotate(20deg);
+}
+
+
+.daisy {
+    width: 28px;
+    height: 28px;
+}
+
+.daisy--top-center { top: 12px; left: 105px; transform: scale(0.85); }
+.daisy--top-right { top: 22px; right: 18px; transform: scale(1.1); }
+.daisy--mid-left { top: 225px; left: 16px; transform: scale(0.9); }
+.daisy--mid-right { top: 280px; right: 12px; transform: scale(1); }
+.daisy--bottom-left { bottom: 100px; left: 20px; transform: scale(0.95); }
+.daisy--bottom-center { bottom: 16px; right: 120px; transform: scale(1.05); }
+
+/* Лепестки — голубые */
+.daisy path,
+.daisy polygon,
+.daisy ellipse {
+    fill: #a8c8f0;
+}
+
+/* Серединка — жёлтая (последний circle или элемент с классом) */
+.daisy circle:last-child,
+.daisy .center {
+    fill: #f5d76e;
+}
+
+.butterfly-purple {
+    bottom: 5px;
+    left: 10px;
+    width: 70px;
+    height: 70px;
+    transform: rotate(-12deg);
+}
+
+.butterfly-pink {
+    bottom: 5px;
+    right: 10px;
+    width: 65px;
+    height: 65px;
+    transform: rotate(14deg);
+}
+
+/* Адаптив под мобильные устройства */
+@media (max-width: 420px) {
+    .app {
+        height: 600px;
+    }
+    .paper {
+        inset: 18px 25px 20px 25px;
+    }
+    h1 {
+        font-size: 38px;
+    }
+    .butterfly-purple {
+        width: 58px;
+        height: 58px;
+    }
+    .butterfly-pink {
+        width: 54px;
+        height: 54px;
+    }
+}
