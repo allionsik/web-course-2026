@@ -313,13 +313,13 @@ h1 {
 .daisy path,
 .daisy polygon,
 .daisy ellipse {
-    fill: #a8c8f0;
+    fill: #a0c459;
 }
 
 /* Серединка — жёлтая (последний circle или элемент с классом) */
 .daisy circle:last-child,
 .daisy .center {
-    fill: #f5d76e;
+    fill: #f3e09d;
 }
 
 .butterfly-purple {
