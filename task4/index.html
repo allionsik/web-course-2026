@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Быки и Коровы</title>
+    
+    <!-- Подключение красивых шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Игра «Быки и коровы»</h1>
+        <p class="rules">Компьютер загадал 4-значное число с неповторяющимися цифрами. Угадайте его!</p>
+        
+        <!-- Поле ввода  -->
+        <div class="input-group">
+            <input type="text" id="guess-input" maxlength="4" placeholder="Введите 4 цифры" autocomplete="off">
+        </div>
+
+        <!-- Две кнопки внизу -->
+        <div class="controls">
+            <button id="check-btn">Проверить</button>
+            <button id="new-game-btn">Новая игра</button>
+        </div>
+
+        <!-- Сообщения об ошибках и победе -->
+        <div id="error-message" class="error hidden"></div>
+        <div id="win-message" class="win hidden"></div>
+
+        <div class="info-panel">
+            <p>Попыток: <span id="attempts-count">0</span></p>
+        </div>
+
+        <div class="history-container">
+            <h3>История попыток:</h3>
+            <ul id="history-list"></ul>
+        </div>
+    </div>
+    
+    <!-- Подключаем главный модуль -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
