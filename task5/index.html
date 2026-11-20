@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Says: Котики</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1 class="game-title">Котики Саймона</h1>
+        
+        <div class="info-panel">
+            <div class="score">Уровень: <span id="level">0</span></div>
+            <button id="start-btn">Играть</button>
+        </div>
+
+        <div class="message" id="message"></div>
+
+        <div class="game-board" id="game-board">
+            
+            <!-- Котик 1 (Красный) -->
+            <div class="sector cat-0" data-id="0">
+                <svg viewBox="0 0 100 100" class="cat-svg">
+                    <!-- Хвост -->
+                    <path d="M 70 85 Q 95 85 90 65 Q 85 50 75 55" fill="none" stroke="#ff6b6b" stroke-width="7" stroke-linecap="round" />
+                    <!-- Тело -->
+                    <path d="M 32 70 Q 32 95 50 95 Q 68 95 68 70 Z" fill="#ff9f9f" />
+                    <!-- Задние лапки -->
+                    <circle cx="41" cy="93" r="3.5" fill="#ff9f9f" />
+                    <circle cx="59" cy="93" r="3.5" fill="#ff9f9f" />
+                    <!-- Передние лапки -->
+                    <circle cx="32" cy="82" r="4" fill="#ffb3b3" />
+                    <circle cx="68" cy="82" r="4" fill="#ffb3b3" />
+                    <!-- Уши -->
+                    <path d="M 20 45 L 25 10 L 45 32 Z" fill="#ff6b6b" />
+                    <path d="M 80 45 L 75 10 L 55 32 Z" fill="#ff6b6b" />
+                    <path d="M 24 40 L 28 18 L 42 32 Z" fill="#ffb3b3" />
+                    <path d="M 76 40 L 72 18 L 58 32 Z" fill="#ffb3b3" />
+                    <!-- Голова -->
+                    <circle cx="50" cy="52" r="32" fill="#ff9f9f" />
+                    <!-- Глаза -->
+                    <g class="eyes">
+                        <circle cx="32" cy="48" r="9" fill="#333" />
+                        <circle cx="68" cy="48" r="9" fill="#333" />
+                        <circle cx="35" cy="44" r="3" fill="#fff" />
+                        <circle cx="71" cy="44" r="3" fill="#fff" />
+                        <circle cx="29" cy="51" r="1.5" fill="#fff" />
+                        <circle cx="65" cy="51" r="1.5" fill="#fff" />
+                    </g>
+                    <!-- Румянец -->
+                    <ellipse cx="22" cy="58" rx="6" ry="3" fill="#ff6b6b" opacity="0.4" />
+                    <ellipse cx="78" cy="58" rx="6" ry="3" fill="#ff6b6b" opacity="0.4" />
+                    <!-- Нос -->
+                    <path d="M 46 58 L 54 58 L 50 63 Z" fill="#ff6b6b" stroke-linejoin="round" />
+                    <!-- Улыбка -->
+                    <path d="M 44 68 Q 47 70 50 67 Q 53 70 56 68" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <!-- Усы -->
+                    <line x1="10" y1="58" x2="22" y2="60" stroke="#333" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="10" y1="64" x2="22" y2="63" stroke="#333" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="90" y1="58" x2="78" y2="60" stroke="#333" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="90" y1="64" x2="78" y2="63" stroke="#333" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+            </div>
+
+            <!-- Котик 2 (Голубой) -->
+            <div class="sector cat-1" data-id="1">
+                <svg viewBox="0 0 100 100" class="cat-svg">
+                    <!-- Хвост -->
+                    <path d="M 30 85 Q 5 85 10 65 Q 15 50 25 55" fill="none" stroke="#48dbfb" stroke-width="7" stroke-linecap="round" />
+                    <!-- Тело -->
+                    <path d="M 32 70 Q 32 95 50 95 Q 68 95 68 70 Z" fill="#a0e6fb" />
+                    <!-- Задние лапки -->
+                    <circle cx="41" cy="93" r="3.5" fill="#a0e6fb" />
+                    <circle cx="59" cy="93" r="3.5" fill="#a0e6fb" />
+                    <!-- Передние лапки -->
+                    <circle cx="32" cy="82" r="4" fill="#b3f0ff" />
+                    <circle cx="68" cy="82" r="4" fill="#b3f0ff" />
+                    <!-- Уши -->
+                    <path d="M 20 45 L 25 10 L 45 32 Z" fill="#48dbfb" />
+                    <path d="M 80 45 L 75 10 L 55 32 Z" fill="#48dbfb" />
+                    <path d="M 24 40 L 28 18 L 42 32 Z" fill="#b3f0ff" />
+                    <path d="M 76 40 L 72 18 L 58 32 Z" fill="#b3f0ff" />
+                    <!-- Голова -->
+                    <circle cx="50" cy="52" r="32" fill="#a0e6fb" />
+                    <!-- Зажмуренные глаза -->
+                    <path d="M 25 50 Q 32 40 40 50" fill="none" stroke="#333" stroke-width="3.5" stroke-linecap="round" />
+                    <path d="M 60 50 Q 68 40 75 50" fill="none" stroke="#333" stroke-width="3.5" stroke-linecap="round" />
+                    <!-- Румянец -->
+                    <ellipse cx="22" cy="58" rx="6" ry="3" fill="#48dbfb" opacity="0.5" />
+                    <ellipse cx="78" cy="58" rx="6" ry="3" fill="#48dbfb" opacity="0.5" />
+                    <!-- Нос -->
+                    <path d="M 46 58 L 54 58 L 50 63 Z" fill="#48dbfb" stroke-linejoin="round" />
+                    <!-- Улыбка -->
+                    <path d="M 44 68 Q 47 70 50 67 Q 53 70 56 68" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <!-- Усы -->
+                    <line x1="10" y1="58" x2="22" y2="60" stroke="#333" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="10" y1="64" x2="22" y2="63" stroke="#333" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="90" y1="58" x2="78" y2="60" stroke="#333" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="90" y1="64" x2="78" y2="63" stroke="#333" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+            </div>
+
+            <!-- Котик 3 (Желтый) -->
+            <div class="sector cat-2" data-id="2">
+                <svg viewBox="0 0 100 100" class="cat-svg">
+                    <!-- Хвост -->
+                    <path d="M 68 85 Q 95 75 85 55" fill="none" stroke="#ffe66d" stroke-width="7" stroke-linecap="round" />
+                    <!-- Тело -->
+                    <path d="M 32 70 Q 32 95 50 95 Q 68 95 68 70 Z" fill="#fff4b3" />
+                    <!-- Задние лапки -->
+                    <circle cx="41" cy="93" r="3.5" fill="#fff4b3" />
+                    <circle cx="59" cy="93" r="3.5" fill="#fff4b3" />
+                    <!-- Передние лапки -->
+                    <circle cx="32" cy="82" r="4" fill="#ffe66d" />
+                    <circle cx="68" cy="82" r="4" fill="#ffe66d" />
+                    <!-- Уши -->
+                    <path d="M 20 45 L 25 10 L 45 32 Z" fill="#ffe66d" />
+                    <path d="M 80 45 L 75 10 L 55 32 Z" fill="#ffe66d" />
+                    <path d="M 24 40 L 28 18 L 42 32 Z" fill="#fff4b3" />
+                    <path d="M 76 40 L 72 18 L 58 32 Z" fill="#fff4b3" />
+                    <!-- Голова -->
+                    <circle cx="50" cy="52" r="32" fill="#fff4b3" />
+                    <!-- Глазки-сердечки -->
+                    <path d="M 0,-5 C -5,-10 -12,-5 -8,2 C -5,8 0,12 0,12 C 0,12 5,8 8,2 C 12,-5 5,-10 0,-5 Z" fill="#ff4757" transform="translate(33, 48) scale(1.0)" />
+                    <path d="M 0,-5 C -5,-10 -12,-5 -8,2 C -5,8 0,12 0,12 C 0,12 5,8 8,2 C 12,-5 5,-10 0,-5 Z" fill="#ff4757" transform="translate(67, 48) scale(1.0)" />
+                    <!-- Блики на сердечках -->
+                    <circle cx="29" cy="43" r="2" fill="#fff" />
+                    <circle cx="63" cy="43" r="2" fill="#fff" />
+                    <!-- Румянец -->
+                    <ellipse cx="22" cy="58" rx="6" ry="3" fill="#ffe66d" opacity="0.6" />
+                    <ellipse cx="78" cy="58" rx="6" ry="3" fill="#ffe66d" opacity="0.6" />
+                    <!-- Нос -->
+                    <path d="M 46 58 L 54 58 L 50 63 Z" fill="#ffe66d" stroke-linejoin="round" />
+                    <!-- Улыбка -->
+                    <path d="M 44 68 Q 47 70 50 67 Q 53 70 56 68" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <!-- Усы -->
+                    <line x1="10" y1="58" x2="22" y2="60" stroke="#333" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="10" y1="64" x2="22" y2="63" stroke="#333" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="90" y1="58" x2="78" y2="60" stroke="#333" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="90" y1="64" x2="78" y2="63" stroke="#333" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+            </div>
+
+            <!-- Котик 4 (Фиолетовый) -->
+            <div class="sector cat-3" data-id="3">
+                <svg viewBox="0 0 100 100" class="cat-svg">
+                    <!-- Хвост -->
+                    <path d="M 30 85 Q 5 85 10 65" fill="none" stroke="#ba68c8" stroke-width="7" stroke-linecap="round" />
+                    <!-- Тело -->
+                    <path d="M 32 70 Q 32 95 50 95 Q 68 95 68 70 Z" fill="#d1a3db" />
+                    <!-- Задние лапки -->
+                    <circle cx="41" cy="93" r="3.5" fill="#d1a3db" />
+                    <circle cx="59" cy="93" r="3.5" fill="#d1a3db" />
+                    <!-- Передние лапки -->
+                    <circle cx="32" cy="82" r="4" fill="#e1c2e8" />
+                    <circle cx="68" cy="82" r="4" fill="#e1c2e8" />
+                    <!-- Уши -->
+                    <path d="M 20 45 L 25 10 L 45 32 Z" fill="#ba68c8" />
+                    <path d="M 80 45 L 75 10 L 55 32 Z" fill="#ba68c8" />
+                    <path d="M 24 40 L 28 18 L 42 32 Z" fill="#e1c2e8" />
+                    <path d="M 76 40 L 72 18 L 58 32 Z" fill="#e1c2e8" />
+                    <!-- Голова -->
+                    <circle cx="50" cy="52" r="32" fill="#d1a3db" />
+                    <!-- Один глаз, второй подмигивает -->
+                    <circle cx="32" cy="48" r="9" fill="#333" />
+                    <circle cx="35" cy="44" r="3" fill="#fff" />
+                    <circle cx="29" cy="51" r="1.5" fill="#fff" />
+                    <path d="M 60 50 Q 68 40 75 50" fill="none" stroke="#333" stroke-width="3.5" stroke-linecap="round" />
+                    <!-- Румянец -->
+                    <ellipse cx="22" cy="58" rx="6" ry="3" fill="#ba68c8" opacity="0.4" />
+                    <ellipse cx="78" cy="58" rx="6" ry="3" fill="#ba68c8" opacity="0.4" />
+                    <!-- Нос -->
+                    <path d="M 46 58 L 54 58 L 50 63 Z" fill="#ba68c8" stroke-linejoin="round" />
+                    <!-- Улыбка -->
+                    <path d="M 44 68 Q 47 70 50 67 Q 53 70 56 67" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <!-- Усы -->
+                    <line x1="10" y1="58" x2="22" y2="60" stroke="#333" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="10" y1="64" x2="22" y2="63" stroke="#333" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="90" y1="58" x2="78" y2="60" stroke="#333" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="90" y1="64" x2="78" y2="63" stroke="#333" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+            </div>
+
+        </div>
+    </div>
+    
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
